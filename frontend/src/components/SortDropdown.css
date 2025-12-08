@@ -1,0 +1,29 @@
+.sort-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sort-dropdown label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.sort-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #3498db;
+}
+
+
+
