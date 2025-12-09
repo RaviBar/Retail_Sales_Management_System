@@ -13,53 +13,47 @@ const SummaryCards = () => {
 
   // Calculate SRs (assuming SR = Sales Record, which is the total count of sales)
   const salesRecords = total || sales.length;
-
+  const cardStyle = "bg-white rounded-lg shadow-sm border border-gray-200 px-4 h-[62px] flex items-center gap-4 min-w-fit whitespace-nowrap";
   return (
-    <div className="flex gap-4 mb-6">
-      <div className="flex-1 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex items-center justify-between">
+    <div className="flex gap-[10px] mb-6">
+      <div className={cardStyle}>
           <div>
-            <p className="text-sm text-gray-600 mb-1">Total units sold</p>
-            <p className="text-2xl font-semibold text-gray-900">{totalUnits}</p>
+            <p className="text-sm text-[#0D141C] mt-1 mb-1">Total units sold</p>
+            <p className="text-[14px] font-bold text-gray-900">{totalUnits}</p>
           </div>
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+          <div className="w-8 h-8 mt-[-5px] rounded-full flex">
             <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-        </div>
       </div>
 
-      <div className="flex-1 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex items-center justify-between">
+      <div className={cardStyle}>
           <div>
-            <p className="text-sm text-gray-600 mb-1">Total Amount</p>
-            <p className="text-2xl font-semibold text-gray-900">
+            <p className="text-sm text-[#0D141C] mt-1 mb-1">Total Amount</p>
+            <p className="text-[14px] font-bold text-gray-900">
               {formatCurrency(totalAmount)} ({salesRecords} SRs)
             </p>
           </div>
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+          <div className="w-8 h-8 mt-[-5px]  rounded-full flex">
             <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-        </div>
       </div>
 
-      <div className="flex-1 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex items-center justify-between">
+      <div className={cardStyle}>
           <div>
-            <p className="text-sm text-gray-600 mb-1">Total Discount</p>
-            <p className="text-2xl font-semibold text-gray-900">
+            <p className="text-sm text-[#0D141C] mt-1 mb-1">Total Discount</p>
+            <p className="text-[14px] font-bold text-gray-900">
               {formatCurrency(totalDiscount)} ({salesRecords} SRs)
             </p>
           </div>
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full flex">
             <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-        </div>
       </div>
     </div>
   );

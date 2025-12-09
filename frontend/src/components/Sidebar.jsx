@@ -14,7 +14,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="w-64 bg-gray-100 min-h-screen flex flex-col">
+    <aside className="w-64 bg-[#F3F3F3] min-h-screen flex flex-col">
       {/* Logo and User Profile */}
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center gap-3 mb-4">
@@ -27,11 +27,13 @@ const Sidebar = () => {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-gray-800">Anurag Yadav</span>
+              <span className="font-bold text-gray-800">Vault</span>
+              
               <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
+            <span className="font-semibold text-gray-800">Anurag Yadav</span>
           </div>
         </div>
       </div>

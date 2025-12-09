@@ -6,11 +6,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Create table if it doesn't exist
 const createTable = async () => {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS sales (
       id SERIAL PRIMARY KEY,
+      transaction_id VARCHAR(255),
       customer_id VARCHAR(255),
       customer_name VARCHAR(255),
       phone_number VARCHAR(50),
@@ -90,13 +90,11 @@ const importCSV = async (filePath, rowLimit = null) => {
       return;
     }
 
-    // Get headers
     const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().replace(/\s+/g, '_'));
     console.log('Headers:', headers);
 
-    // Map headers to database columns (case-insensitive, handles variations)
     const headerMap = {
-      'transaction_id': null, // Skip transaction ID
+      'transaction_id': 'transaction_id',
       'date': 'date',
       'customer_id': 'customer_id',
       'customer_name': 'customer_name',
@@ -111,7 +109,7 @@ const importCSV = async (filePath, rowLimit = null) => {
       'product_category': 'product_category',
       'tags': 'tags',
       'quantity': 'quantity',
-      'pri': null, // Skip the "Pri" column (appears to be duplicate/extra)
+      'pri': null, 
       'price_per_unit': 'price_per_unit',
       'discount_percentage': 'discount_percentage',
       'total_amount': 'total_amount',
@@ -125,13 +123,12 @@ const importCSV = async (filePath, rowLimit = null) => {
       'employee_name': 'employee_name'
     };
 
-    // Clear existing data
     await pool.query('TRUNCATE TABLE sales CASCADE');
 
-    // Insert data in batches (smaller batches for large files)
     const batchSize = 50;
     const insertQuery = `
       INSERT INTO sales (
+      transaction_id,
         customer_id, customer_name, phone_number, gender, age,
         customer_region, customer_type, product_id, product_name, brand,
         product_category, tags, quantity, price_per_unit, discount_percentage,
@@ -159,7 +156,6 @@ const importCSV = async (filePath, rowLimit = null) => {
         continue;
       }
 
-      // Helper to get value by header name
       const getValue = (headerName) => {
         const index = getColumnIndex(headerName);
         if (index === null || index >= values.length) return null;
@@ -168,6 +164,7 @@ const importCSV = async (filePath, rowLimit = null) => {
       };
 
       const dbValues = [
+        getValue('transaction_id'),
         getValue('customer_id'),
         getValue('customer_name'),
         getValue('phone_number'),
@@ -198,7 +195,6 @@ const importCSV = async (filePath, rowLimit = null) => {
       batch.push(dbValues);
 
       if (batch.length >= batchSize) {
-        // Use transaction for batch insert
         const client = await pool.connect();
         try {
           await client.query('BEGIN');
@@ -246,7 +242,6 @@ const importCSV = async (filePath, rowLimit = null) => {
 // Main import function
 const main = async () => {
   try {
-    // Get limit from command line argument (e.g., node importData.js 10000)
     const rowLimit = process.argv[2] ? parseInt(process.argv[2]) : null;
     
     if (rowLimit) {
@@ -260,7 +255,6 @@ const main = async () => {
     console.log('Creating table...');
     await createTable();
 
-    // Look for CSV file in common locations
     const possiblePaths = [
       path.join(__dirname, '../../data/sales_data.csv'),
       path.join(__dirname, '../../sales_data.csv'),

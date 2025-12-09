@@ -158,7 +158,7 @@ const FilterDropdowns = () => {
   ];
 
   return (
-    <div className="flex items-center gap-2 mb-4 flex-wrap">
+    <div className="flex items-center gap-2 flex-wrap">
       <button
         onClick={refresh}
         className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -173,8 +173,7 @@ const FilterDropdowns = () => {
         <div key={key} className="relative">
           <button
             onClick={() => setOpenDropdown(openDropdown === key ? null : key)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
-          >
+            className="flex items-center gap-2 px-3 py-1.5 bg-[#F3F3F3] rounded-md hover:bg-gray-50 transition-colors text-[14px] font-medium text-gray-700"          >
             <span>{label}</span>
             {getActiveCount(key) > 0 && (
               <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">
@@ -192,7 +191,7 @@ const FilterDropdowns = () => {
                 className="fixed inset-0 z-10"
                 onClick={() => setOpenDropdown(null)}
               ></div>
-              <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-20 min-w-[200px]">
+              <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-50 min-w-[200px]">
                 {key === 'ageRange' ? (
                   <div className="p-4">
                     <div className="space-y-3">
@@ -203,7 +202,7 @@ const FilterDropdowns = () => {
                           placeholder="Min"
                           value={filters.ageMin || ''}
                           onChange={(e) => updateFilter('ageMin', e.target.value ? parseInt(e.target.value) : null)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                          className="w-full px-2 py-2 border border-gray-300 rounded-md text-sm"
                           min="0"
                         />
                       </div>
