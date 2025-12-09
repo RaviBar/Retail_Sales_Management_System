@@ -10,17 +10,17 @@ The project is configured to use a Render PostgreSQL database. To set up your `.
 
 ```env
 PORT=5000
-DATABASE_URL=postgresql://retail_management_db_user:HthHrga16wEEQbQ3Z7XOL4v4lSr1VtwK@dpg-d4r69nndiees739lbal0-a.oregon-postgres.render.com/retail_management_db
+DATABASE_URL=postgresql://username:password@host:5432/db_name
 NODE_ENV=development
 ```
 
 ## Database Connection Details
 
-- **Host**: dpg-d4r69nndiees739lbal0-a.oregon-postgres.render.com
+- **Host**: <DB_HOST>
 - **Port**: 5432
-- **Database**: retail_management_db
-- **Username**: retail_management_db_user
-- **Password**: HthHrga16wEEQbQ3Z7XOL4v4lSr1VtwK
+- **Database**: <DB_NAME>
+- **Username**: <DB_USER>
+- **Password**: <DB_PASSWORD>
 
 ## Importing Data
 
