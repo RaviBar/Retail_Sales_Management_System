@@ -20,7 +20,7 @@ const Sidebar = () => {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded flex items-center justify-center overflow-hidden">
             <img 
-              src="/logo.png" 
+              src="/Vault_logo.jpeg" 
               alt="Logo" 
               className="w-full h-full object-cover"
             />
