@@ -3,6 +3,7 @@ import pool from './database.js';
 export const buildSalesQuery = (filters) => {
   let query = `
     SELECT 
+      transaction_id as "transactionId",
       customer_id as "customerId",
       customer_name as "customerName",
       phone_number as "phoneNumber",

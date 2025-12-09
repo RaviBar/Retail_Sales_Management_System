@@ -134,7 +134,7 @@ const importCSV = async (filePath, rowLimit = null) => {
         product_category, tags, quantity, price_per_unit, discount_percentage,
         total_amount, final_amount, date, payment_method, order_status,
         delivery_type, store_id, store_location, salesperson_id, employee_name
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25)
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)
     `;
 
     let batch = [];
